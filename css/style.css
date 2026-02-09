@@ -1,0 +1,205 @@
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================= */
+:root {
+    --primary: #0d6efd;       /* Azul Médico Principal */
+    --secondary: #6c757d;     /* Gris para textos secundarios */
+    --accent: #00d4ff;        /* Azul brillante para detalles */
+    --dark: #212529;          /* Negro suave para títulos */
+    --light-bg: #f8f9fa;      /* Fondo gris muy claro */
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* El contenido principal empuja al footer */
+main, section:first-of-type, header:first-of-type {
+    flex: 1 0 auto;
+}
+
+/* =========================================
+   NAVBAR SIEMPRE VISIBLE (ELITE)
+   ========================================= */
+.navbar {
+    padding: 15px 0;
+    transition: all 0.4s ease;
+    background-color: white !important; /* Fondo blanco por defecto */
+    z-index: 1050 !important; /* Asegura que esté por encima de TODO */
+}
+
+/* Efecto cuando bajas el scroll */
+.navbar.shadow-scrolled {
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.9) !important; /* Transparencia elegante */
+    backdrop-filter: blur(10px); /* Efecto cristal de iPhone */
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Ajuste para que el contenido no se meta debajo del menú al cargar */
+body {
+    padding-top: 80px; /* Esto deja el espacio exacto para el menú fijo */
+}
+
+/* Asegurar que los links se vean siempre negros/oscuros */
+.nav-link {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+}
+
+/* =========================================
+   HERO SECTION MEJORADO (PARALLAX)
+   ========================================= */
+.hero-section {
+    position: relative;
+    background: linear-gradient(45deg, rgba(13, 110, 253, 0.8), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=2070&auto=format&fit=crop');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding: 200px 0 150px;
+    color: white;
+}
+
+/* Heroes de páginas internas */
+.inner-hero {
+    padding: 150px 0 100px;
+    background: linear-gradient(rgba(13, 110, 253, 0.9), rgba(33, 37, 41, 0.8)),
+                url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1920');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* =========================================
+   CARDS & BOTONES
+   ========================================= */
+.card-premium, .card {
+    border-radius: 20px;
+    border: none;
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    border: none;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4);
+}
+
+/* =========================================
+   FOOTER REPOTENCIADO (DISEÑADO POR JEAN AVALOS)
+   ========================================= */
+footer {
+    flex-shrink: 0;
+    background-color: #1a1d20 !important; /* Fondo oscuro sólido */
+    color: #ffffff !important; /* Texto general en blanco */
+    padding: 60px 0 30px;
+    border-top: 4px solid var(--primary);
+}
+
+/* Títulos del footer (Enlaces Rápidos, Horarios, etc.) */
+footer h4, footer h5 {
+    color: #ffffff !important;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilo para los enlaces del footer */
+footer a.text-muted {
+    color: #adb5bd !important; /* Gris claro para que sea legible */
+    transition: var(--transition);
+}
+
+footer a.text-muted:hover {
+    color: var(--accent) !important; /* Brillo cian al pasar el mouse */
+    padding-left: 5px;
+}
+
+/* Estilo para los párrafos de horarios y ubicación */
+footer p.text-muted {
+    color: #dee2e6 !important; /* Gris muy claro casi blanco */
+}
+
+/* La línea divisoria */
+footer hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 30px 0;
+}
+
+/* Tu Firma: DISEÑADO POR JEAN AVALOS */
+footer strong {
+    color: var(--accent) !important; /* Color cian brillante */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Iconos de redes sociales */
+footer .fab {
+    transition: var(--transition);
+}
+
+footer .fab:hover {
+    transform: scale(1.2);
+    color: white !important;
+}
+
+/* =========================================
+   PRELOADER (FIJO)
+   ========================================= */
+#preloader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #ffffff;
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* =========================================
+   ANIMACIONES
+   ========================================= */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-section h1, .hero-section p, .hero-section .btn {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
